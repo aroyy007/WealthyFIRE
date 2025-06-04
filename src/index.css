@@ -1,0 +1,250 @@
+
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    --background: 0 0% 10%;
+    --foreground: 0 0% 90%;
+
+    --card: 0 0% 18%;
+    --card-foreground: 0 0% 90%;
+
+    --popover: 0 0% 10%;
+    --popover-foreground: 0 0% 90%;
+
+    --primary: 45 80% 50%;
+    --primary-foreground: 0 0% 10%;
+
+    --secondary: 0 0% 18%;
+    --secondary-foreground: 0 0% 90%;
+
+    --muted: 0 0% 20%;
+    --muted-foreground: 0 0% 70%;
+
+    --accent: 160 100% 39%; 
+    --accent-foreground: 0 0% 10%;
+
+    --destructive: 0 84.2% 60.2%;
+    --destructive-foreground: 0 0% 98%;
+
+    --border: 0 0% 20%;
+    --input: 0 0% 20%;
+    --ring: 45 80% 50%;
+
+    --radius: 0.5rem;
+  }
+
+  * {
+    @apply border-border;
+  }
+
+  body {
+    @apply bg-charcoal text-platinum font-sans relative;
+  }
+
+  body::before {
+    content: "";
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-image: url('/lovable-uploads/fcf20599-8b09-4b05-ba8d-1f96d128e533.png');
+    background-size: cover;
+    background-position: center;
+    opacity: 0.08;
+    filter: none;
+    z-index: -1;
+    pointer-events: none;
+  }
+
+  h1, h2, h3, h4, h5, h6 {
+    @apply font-display font-bold;
+  }
+
+  /* Mobile-first responsive typography */
+  h1 {
+    @apply text-2xl sm:text-3xl md:text-4xl lg:text-5xl xl:text-6xl;
+  }
+
+  h2 {
+    @apply text-xl sm:text-2xl md:text-3xl lg:text-4xl;
+  }
+
+  h3 {
+    @apply text-lg sm:text-xl md:text-2xl;
+  }
+
+  /* Ensure minimum touch target sizes */
+  button, a, input, select, textarea {
+    @apply min-h-[44px] touch-manipulation;
+  }
+}
+
+@layer components {
+  .gold-button {
+    @apply bg-gold-gradient text-charcoal font-bold py-3 px-4 md:px-6 rounded-2xl transition-all 
+    hover:shadow-[0_0_20px_rgba(255,215,0,0.8)] hover:scale-105 text-sm md:text-base min-h-[48px]
+    flex items-center justify-center;
+  }
+
+  .metric-badge {
+    @apply bg-softdark border border-goldLight/20 rounded-2xl px-3 py-2 md:px-4 md:py-2 inline-flex items-center
+    shadow-lg shadow-goldLight/5 text-sm md:text-base;
+  }
+
+  .blog-card {
+    @apply bg-softdark rounded-2xl overflow-hidden border border-platinum/10 transition-all
+    hover:shadow-[0_0_20px_rgba(255,215,0,0.6)] hover:-translate-y-1;
+  }
+
+  .dashboard-card {
+    @apply bg-softdark rounded-2xl border border-platinum/20 p-4 md:p-5 shadow-lg;
+  }
+
+  .input-dark {
+    @apply bg-charcoal border border-platinum/20 rounded-lg px-3 py-2 md:px-4 md:py-2 text-platinum
+    placeholder:text-platinum/50 focus:border-goldLight focus:outline-none focus:shadow-[0_0_10px_rgba(255,215,0,0.3)]
+    text-sm md:text-base min-h-[48px];
+  }
+
+  .neon-text {
+    @apply text-goldLight drop-shadow-[0_0_8px_rgba(255,215,0,0.7)];
+  }
+
+  /* Mobile-optimized containers */
+  .container {
+    @apply px-4 sm:px-6 lg:px-8;
+  }
+
+  /* Responsive grid improvements */
+  .responsive-grid {
+    @apply grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 md:gap-6 lg:gap-8;
+  }
+
+  /* Mobile-friendly card spacing */
+  .mobile-card {
+    @apply p-4 md:p-6 rounded-xl md:rounded-2xl;
+  }
+
+  /* Touch-friendly interactive elements */
+  .touch-target {
+    @apply min-h-[44px] min-w-[44px] flex items-center justify-center;
+  }
+
+  /* Mobile navigation improvements */
+  .mobile-nav-item {
+    @apply block w-full text-left py-3 px-4 text-base hover:bg-softdark/50 rounded-lg transition-colors;
+  }
+}
+
+.blog-gradient-overlay {
+  background: linear-gradient(to bottom, rgba(26,26,26,0) 0%, rgba(26,26,26,0.8) 70%, rgba(26,26,26,1) 100%);
+}
+
+.gold-text-gradient {
+  background: linear-gradient(to right, #FFD700, #C5A42E);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  filter: drop-shadow(0 0 8px rgba(255, 215, 0, 0.7));
+}
+
+.floating-badge {
+  animation: float 3s ease-in-out infinite;
+  box-shadow: 0 0 15px rgba(255, 215, 0, 0.5);
+}
+
+@keyframes neon-pulse {
+  0% {
+    box-shadow: 0 0 10px rgba(255, 215, 0, 0.5);
+  }
+  50% {
+    box-shadow: 0 0 20px rgba(255, 215, 0, 0.7);
+  }
+  100% {
+    box-shadow: 0 0 10px rgba(255, 215, 0, 0.5);
+  }
+}
+
+.neon-glow {
+  animation: neon-pulse 2s ease-in-out infinite;
+}
+
+@keyframes fade-in {
+  from {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes scale-in {
+  from {
+    opacity: 0;
+    transform: scale(0.95);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+.animate-fade-in {
+  animation: fade-in 0.3s ease-out;
+}
+
+.animate-scale-in {
+  animation: scale-in 0.2s ease-out;
+}
+
+/* Mobile-specific optimizations */
+@media (max-width: 768px) {
+  /* Reduce animation complexity on mobile for better performance */
+  .floating-badge {
+    animation: none;
+  }
+  
+  /* Optimize background blur for mobile */
+  body::before {
+    filter: blur(1px);
+  }
+  
+  /* Improve mobile scroll performance */
+  * {
+    -webkit-overflow-scrolling: touch;
+  }
+  
+  /* Mobile-friendly form elements */
+  input, textarea, select {
+    @apply text-base; /* Prevents zoom on iOS */
+  }
+}
+
+/* Tablet optimizations */
+@media (min-width: 768px) and (max-width: 1024px) {
+  .container {
+    @apply px-6;
+  }
+}
+
+/* Improve accessibility */
+@media (prefers-reduced-motion: reduce) {
+  .floating-badge,
+  .neon-glow,
+  .animate-fade-in,
+  .animate-scale-in {
+    animation: none !important;
+  }
+  
+  * {
+    transition: none !important;
+  }
+}
